@@ -11,6 +11,7 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 
 import in.apssdc.entity.User;
+import in.apssdc.rm.UserRowMapper;
 @Repository
 public class UserDAOImpl extends BaseDAO implements UserDAO{
 
@@ -78,21 +79,28 @@ public class UserDAOImpl extends BaseDAO implements UserDAO{
 	}
 
 	@Override
-	public void findById(Integer userId) {
-		// TODO Auto-generated method stub
-		
+	public User findById(Integer userId) {
+		String sql = "SELECT userId,name,phone,email,address,loginName,role,loginStatus "
+	+"FROM CAPP_USER WHERE  userId=?";
+		User u = getJdbcTemplate().queryForObject(sql,new UserRowMapper(),userId);
+		return u;
 	}
 
 	@Override
 	public List<User> finAll() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql ="SELECT userId,name,phone,email,address,loginName,role,loginStatus " 
+				+"FROM CAPP_USER";
+		List<User> users = getJdbcTemplate().query(sql, new UserRowMapper());
+		return users;
 	}
 
 	@Override
 	public List<User> findByProperty(String propertyName, Object propValue) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql="SELECT userid,name,phone,email,adress,loginName,role,loginStatus"
+				+"FROM CAPP_USER WHERE "+propertyName+"=?";
+		return getJdbcTemplate().query(sql, new UserRowMapper(),propValue);
+		
+		
 	}
 
 	
