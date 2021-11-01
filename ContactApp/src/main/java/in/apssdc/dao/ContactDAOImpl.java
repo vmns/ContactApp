@@ -2,8 +2,10 @@ package in.apssdc.dao;
 
 import java.util.List;
 
-import in.apssdc.entity.Contact;
+import org.springframework.stereotype.Repository;
 
+import in.apssdc.entity.Contact;
+@Repository
 public class ContactDAOImpl implements ContactDAO{
 
 	@Override
