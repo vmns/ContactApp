@@ -10,7 +10,8 @@ public interface ContactDAO {
 	public void update(Contact c);
 	public void delete(Contact c);
 	public void delete(Integer id);
-	public void findById(Integer cid);
+	public void delete(String name);
+	public Contact findById(Integer cid);
 	public List<Contact> findAll();
 	public List<Contact> findByProperty(String proName,Object propValue);
 }
