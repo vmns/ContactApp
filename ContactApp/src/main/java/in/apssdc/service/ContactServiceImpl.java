@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import in.apssdc.dao.BaseDAO;
 import in.apssdc.dao.ContactDAO;
 import in.apssdc.entity.Contact;
+import in.apssdc.rm.ContactRowMapper;
 import in.apssdc.util.StringUtil;
 @Service
 public class ContactServiceImpl extends BaseDAO implements ContactService{
@@ -40,14 +41,14 @@ public class ContactServiceImpl extends BaseDAO implements ContactService{
 
 	@Override
 	public List<Contact> findUserContact(Integer userId) {
-		// TODO Auto-generated method stub
-		return null;
+		return contactdao.findByProperty("userId", userId);
 	}
 
 	@Override
 	public List<Contact> findUserContact(Integer userId, String txt) {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select contactId,userId,name,phone,email,address,remarks from capp_contact where"
+				+" userId=? and (name like '%"+txt+"%' or address like '%"+txt+"%' or phone like '%"+txt+"%' or email like '%"+txt+"%' or remarks like '%"+txt+"%')";
+		return getJdbcTemplate().query(sql, new ContactRowMapper(),userId);
 	}
 
 }
