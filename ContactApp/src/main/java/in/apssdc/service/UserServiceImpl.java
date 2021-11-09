@@ -17,7 +17,12 @@ public class UserServiceImpl extends BaseDAO implements UserService{
 	public void register(User u) {
 		userdao.save(u);
 	}
-
+	/*
+	 * The method handles login operation(authentication) using given credentials. it returns  userobject
+	 * when success and null when failed
+	 * When user userobject  is blocked an exception will be thrown by this method
+	 */ 
+	 
 	@Override
 	public User login(String loginName, String pwd) throws UserBlockedException {
 		// TODO Auto-generated method stub

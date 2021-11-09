@@ -1,0 +1,15 @@
+body
+{
+	font-fmaily: Arial,Helvetica,Geneva,Sans-serif;
+	font-size:18px;
+	color:#FF0000;
+}
+
+.error
+{
+	color:#FF0000; /* red color */
+}
+.success
+{
+	color:#0000FF; /* blue color */
+}
