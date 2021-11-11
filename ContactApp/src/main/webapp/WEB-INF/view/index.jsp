@@ -1,34 +1,57 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="ISO-8859-1">
-<!-- linking css file --> 
-<link href="static/css/style.css" rel="stylesheet" type="text/css"/>
+<link href='<s:url value="/resources/css/style.css"/>' rel="stylesheet" />
 <title>Insert title here</title>
 </head>
+
 <body>
 	
-	<table border="1" width="80%" align="center">
+	<table class="tab" border="1" width="80%" align="center">
 		<tr>
 			<td height="80px">
-				<h1 >Contact Application- APSSDC Training</h1>
+			<!-- Header part -->
+				<jsp:include page="header.jsp"/>
 			</td>
 		</tr>
 		<tr>
 			<td height="25px">
-				<h2>Menu</h2>
+			<!-- Menu part -->
+				<jsp:include page="menu.jsp"/>
 			</td>
 		</tr>
 		<tr>
 			<td height="350px">
-				<h1>body</h1>
+			<!-- content here -->
+				<h3>User Login </h3>
+				<s:url var="url_login" value="/login/"/>
+				<f:form action="${url_login}" modelAttribute="command">
+					<table border="1">
+					<tr>
+					<td>USER NAME</td>
+					<td><f:input path="loginName"/></td>
+					</tr>
+					<tr>
+					<td>PASSWORD</td>
+					<td><f:password path="password"/></td>
+					</tr>
+					<tr colspan="2" align="right">
+					<button>Login</button><br>
+					<a href="#">New User registration</a>
+					</tr>
+					</table>
+				</f:form>
 			</td>
 		</tr>
 		<tr>
 			<td height="25px">
-				<h2>footer</h2>
+			<!-- footer part -->
+				<jsp:include page="footer.jsp"/>
 			</td>
 		</tr>
 	</table>

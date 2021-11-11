@@ -7,7 +7,10 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h2>welcome to APSSDC training on
-Developing web application using spring framework</h2>
+<a href="#">Home</a>
+<a href="#">Login</a>
+<a href="#">Register</a>
+<a href="/about" target="_blank">About</a>
+
 </body>
 </html>

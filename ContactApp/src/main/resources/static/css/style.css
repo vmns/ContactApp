@@ -1,8 +1,12 @@
 body
 {
 	font-fmaily: Arial,Helvetica,Geneva,Sans-serif;
-	font-size:18px;
+	font-size:10px;
+	color:pink;
+}
+h1{
 	color:#FF0000;
+	font-size:18px;
 }
 
 .error
@@ -12,4 +16,8 @@ body
 .success
 {
 	color:#0000FF; /* blue color */
+}
+
+a{
+	font-size:15px;
 }
