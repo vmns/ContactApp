@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+    pageEncoding="ISO-8859-1" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,7 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h1>welcome to admin dashboard</h1>
-<h2> Admin To do's </h2>
+<table class="tab" border="1" width="100%" align="center">
+		<tr>
+			<td><jsp:include page="header.jsp" /></td>
+		</tr>
+		<tr>
+			<td><jsp:include page="menu.jsp" /></td>
+		</tr>
+		<tr>
+			<td>
+				<h1>welcome to Admin dashboard</h1>
+				<h2>Admin To do's</h2>
+			</td>
+		</tr>
+		<tr>
+		<td>
+		<jsp:include page="footer.jsp"></jsp:include>
+		</td>
+		</tr>
+	</table>
 </body>
 </html>

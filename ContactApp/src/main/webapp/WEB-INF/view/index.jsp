@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@taglib uri="http://www.springframework.org/tags" prefix="s" %>
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="f" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -28,13 +29,17 @@
 		<tr>
 			<td height="350px">
 			<!-- content here -->
+			<c:if test="${err!=null}">
+			<p>${err}</p>
+			</c:if>
 				<h3>User Login </h3>
-				<s:url var="url_login" value="/login/"/>
+				
+				<s:url var="url_login" value="/login"/>
 				<f:form action="${url_login}" modelAttribute="command">
 					<table border="1">
 					<tr>
 					<td>USER NAME</td>
-					<td><f:input path="loginName"/></td>
+					<td><f:input path="loginName"/></td> <!-- <input type="text" name="loginName"/> -->
 					</tr>
 					<tr>
 					<td>PASSWORD</td>
