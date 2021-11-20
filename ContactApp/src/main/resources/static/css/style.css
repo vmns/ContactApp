@@ -12,6 +12,7 @@ h1{
 .error
 {
 	color:#FF0000; /* red color */
+	font-size:25px;
 }
 .success
 {

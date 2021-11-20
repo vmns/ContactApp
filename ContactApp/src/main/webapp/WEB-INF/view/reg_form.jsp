@@ -32,27 +32,37 @@
 			<c:if test="${err!=null}">
 			<p>${err}</p>
 			</c:if>
-			<c:if test="${act eq 'lo'}">
-			<p class="success"> User Logged out successfully</p> 
-			</c:if>
-			<c:if test="${abc eq 'reg'}">
-			<p class="success"> Registration completed successfully</p>
-			</c:if>
-				<h3>User Login </h3>
+				<h3>Register User </h3>
 				
-				<s:url var="url_login" value="/login"/>
-				<f:form action="${url_login}" modelAttribute="command">
+				<s:url var="url_reg" value="/register"/>
+				<f:form action="${url_reg}" modelAttribute="command">
 					<table border="1">
 					<tr>
-					<td>USER NAME</td>
-					<td><f:input path="loginName"/></td> <!-- <input type="text" name="loginName"/> -->
+					<td>NAME</td>
+					<td><f:input path="user.name"/>
+					</tr>
+					<tr>
+					<td>PHONE</td>
+					<td><f:input path="user.phone"/></td>
+					</tr>
+					<tr>
+					<td>EMAIL</td>
+					<td><f:input path="user.email"/></td>
+					</tr>
+					<tr>
+					<td>ADDRESS</td>
+					<td><f:input path="user.address"/></td>
+					</tr>
+					<tr>
+					<td>LOGIN NAME</td>
+					<td><f:input path="user.loginName"/></td>
 					</tr>
 					<tr>
 					<td>PASSWORD</td>
-					<td><f:password path="password"/></td>
+					<td><f:password path="user.password"/></td>
 					</tr>
 					<tr colspan="2" align="right">
-					<button>Login</button><br>
+					<button>Register</button><br>
 					<a href="#">New User registration</a>
 					</tr>
 					</table>

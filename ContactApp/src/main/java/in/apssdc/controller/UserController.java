@@ -2,6 +2,7 @@ package in.apssdc.controller;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import in.apssdc.command.LoginCommand;
+import in.apssdc.command.UserCommand;
 import in.apssdc.entity.User;
 import in.apssdc.exception.UserBlockedException;
 import in.apssdc.service.UserService;
@@ -80,4 +82,41 @@ public class UserController {
 		s.setAttribute("userId", u.getUserId());
 		s.setAttribute("role", u.getRole());
 	}
+	@RequestMapping(value="/reg_form")
+	public String registrationForm(Model m)
+	{
+		// TODO command object is needed here
+		m.addAttribute("command", new UserCommand());
+		
+		return "reg_form";
+	}
+	@RequestMapping(value="/register")
+	public String registerUser(@ModelAttribute("command") UserCommand cmd,Model m)
+	{
+		
+		try {
+			// Getting/reading values from the form
+			User user = cmd.getUser();
+			user.setRole(UserService.ROLE_USER);
+			user.setLoginStatus(UserService.LOGIN_STATUS_ACTIVE);
+			// save the user data to the database
+			userService.register(user);
+			//m.addAttribute("successmsg", "User registered successfully!,Please login");
+			return "redirect:index?abc=reg"; // redirecting to index page with status (act=reg)
+		} catch (DuplicateKeyException e) {
+			m.addAttribute("err", "Username is already registered.Please select different username");
+			e.printStackTrace();
+			return "reg_form";
+		}
+		
+	}
+	@RequestMapping(value="/logout")
+	public String logout(HttpSession session)
+	{
+		session.invalidate();
+		return "redirect:index?act=lo";
+	}
 }
+
+//git push -u origin --all
+// git push -u origin --tags
