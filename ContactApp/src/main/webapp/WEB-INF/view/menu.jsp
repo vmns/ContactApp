@@ -27,9 +27,12 @@
 <c:if test="${sessionScope.userId != null && sessionScope.role == 2}">
 <%-- User logged in :username --%>
 <s:url var="url_logout" value="/logout"/>
+
+<s:url var="url_cform" value="/user/contact_form"></s:url>
+<s:url var="url_clist" value="/user/clist"/>
 <a href="#">Home</a>
-<a href="#">Add Contact</a>
-<a href="#">Contact List</a>
+<a href="${url_cform}">Add Contact</a>
+<a href="${url_clist}">Contact List</a>
 <a href="${url_logout}">Logout</a>
 <%--${sessionScope.name} --%>
 ${sessionScope.user.getName() }
