@@ -8,6 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 import in.apssdc.command.LoginCommand;
 import in.apssdc.command.UserCommand;
@@ -116,6 +118,28 @@ public class UserController {
 		session.invalidate();
 		return "redirect:index?act=lo";
 	}
+	@RequestMapping(value="/admin/users")
+	public String getUserList(Model m)
+	{
+		m.addAttribute("usersList", userService.getUserList());
+		return "users";
+	}
+	@RequestMapping(value="/admin/change_status")
+	@ResponseBody
+	public String changeLoginStatus(@RequestParam Integer userId,@RequestParam Integer loginStatus)
+	{
+		try
+		{
+		userService.changeLoginStatus(userId, loginStatus);
+		return "SUCCESS: status changed";
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			return "ERROR: Unable to change status";
+		}
+	}
+	
 }
 
 //git push -u origin --all

@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import in.apssdc.dao.BaseDAO;
 import in.apssdc.dao.ContactDAO;
+import in.apssdc.dao.UserDAO;
 import in.apssdc.entity.Contact;
+import in.apssdc.entity.User;
 import in.apssdc.rm.ContactRowMapper;
 import in.apssdc.util.StringUtil;
 @Service
@@ -56,5 +58,7 @@ public class ContactServiceImpl extends BaseDAO implements ContactService{
 		
 		return contactdao.findById(cid);
 	}
+
+	
 
 }

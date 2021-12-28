@@ -3,6 +3,7 @@ package in.apssdc.service;
 import java.util.List;
 
 import in.apssdc.entity.Contact;
+import in.apssdc.entity.User;
 
 public interface ContactService {
 
@@ -13,4 +14,5 @@ public interface ContactService {
 	public List<Contact> findUserContact(Integer userId);
 	public List<Contact> findUserContact(Integer userId,String txt);
 	public Contact findById(Integer cid);
+	
 }

@@ -65,12 +65,16 @@ public class UserServiceImpl extends BaseDAO implements UserService{
 	@Override
 	public List<User> getUserList() {
 		// TODO Auto-generated method stub
-		return null;
+		return userdao.findByProperty("role",UserService.ROLE_USER);
 	}
 
 	@Override
 	public void changeLoginStatus(Integer userId, Integer loginStatus) {
-		// TODO Auto-generated method stub
+		String sql="UPDATE CAPP_USER SET loginStatus=:loginStatus WHERE userId=:userId";
+		Map m = new HashMap();
+		m.put("userId",userId);
+		m.put("loginStatus",loginStatus);
+		getNamedParameterJdbcTemplate().update(sql,m);
 		
 	}
 

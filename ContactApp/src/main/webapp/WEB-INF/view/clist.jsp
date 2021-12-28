@@ -16,9 +16,15 @@
 </tr>
 <tr><td>
 	<h1>contact list page</h1>
+	<form action="<s:url value="/user/contact_search"/>" >
+	<input type="text" name="freeText" placeholder="Enter text to search" value="${param.freeText}">
+	<button>search</button>
+	</form></br>
 	<c:if test="${param.act eq 'del'}">
 	<p class="success">contact deleted succesfully</p>
 	</c:if>
+	<form action="<s:url value="/user/bulk_cdelete"/>">
+	<button>Delete selected records</button></br>
 	<table border="1">
 		<tr>
 			<th>SR</th>
@@ -37,7 +43,7 @@
 		</c:if>
 		<c:forEach var="c" items="${contactList}" varStatus="st">
 		<tr>
-		<td>${st.count}</td>
+		<td><input  type="checkbox" name="cid" value="${c.contactId}"></td>
 		<td>${c.contactId}</td>
 		<td>${c.name}</td>
 		<td>${c.phone}</td>
@@ -54,6 +60,7 @@
 		</tr>
 		</c:forEach>
 	</table>
+	</form>
 	</td>
 	</tr>
 	<tr>

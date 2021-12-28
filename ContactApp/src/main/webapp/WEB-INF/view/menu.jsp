@@ -19,8 +19,9 @@
 </c:if>
 <c:if test="${sessionScope.userId != null && sessionScope.role == 1}">
 <%-- Admin is logged in:admin Name --%>
+
 <a href="#">Home</a>
-<a href="#">UserList</a>
+<a href="<s:url value="/admin/users"/>">UserList</a>
 <a href="#">Logout</a>
 "${sessionScope.name}"
 </c:if>
